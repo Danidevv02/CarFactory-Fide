@@ -120,15 +120,6 @@ class Fabrica {
         int objetivoDinero = 0;
         int objetivoOrdenesPerdidas = 0;
 
-        // Lógica para determinar los objetivos según la fábrica actual
-        // Se omite por simplicidad en este ejemplo
-
-        if (jugador.alcanzarObjetivo(objetivoDinero, objetivoOrdenesPerdidas)) {
-            System.out.println("¡Has alcanzado los objetivos de la fábrica!");
-        } else {
-            System.out.println("No has alcanzado los objetivos de la fábrica.");
-        }
-    } 
     private void determinarObjetivos() {
         switch (fabricaActual) {
             case 1:
@@ -148,5 +139,13 @@ class Fabrica {
                 objetivoOrdenesPerdidas = 0;
                 break;
         }
-    }        
+    }  
+
+        if (jugador.alcanzarObjetivo(objetivoDinero, objetivoOrdenesPerdidas)) {
+            System.out.println("¡Has alcanzado los objetivos de la fábrica!");
+        } else {
+            System.out.println("No has alcanzado los objetivos de la fábrica.");
+        }
+    } 
+      
 }
