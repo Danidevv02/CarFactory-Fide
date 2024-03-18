@@ -7,6 +7,7 @@ public class jugador {
     private List<ficha> fichasEnJuego;
     private int puntaje;
     private List<fichaEspecial> fichasEspeciales;
+    private int ordenesPerdidas;
 
     public jugador(String nombre) {
         this.nombre = nombre;
@@ -14,6 +15,8 @@ public class jugador {
         this.fichasEnJuego = new ArrayList<>();
         this.puntaje = 0;
         this.fichasEspeciales = new ArrayList<>();
+        this.dinero = 0;
+        this.ordenesPerdidas = 0;
     }
 
     public String getNombre() {
@@ -86,5 +89,20 @@ public class jugador {
     
     public boolean tieneFichasEspeciales() {
         // Implementar la lógica para indicar si el jugador tiene fichas especiales que puede usar.
+    }
+        public int getNivel() {
+        return nivel;
+    }
+
+    public void incrementarDinero(int cantidad) {
+        this.dinero += cantidad;
+    }
+
+    public void incrementarOrdenesPerdidas() {
+        this.ordenesPerdidas++;
+    }
+
+    public boolean alcanzarObjetivo(int objetivoDinero, int objetivoOrdenesPerdidas) {
+        return (dinero >= objetivoDinero && ordenesPerdidas <= objetivoOrdenesPerdidas);
     }
 }
