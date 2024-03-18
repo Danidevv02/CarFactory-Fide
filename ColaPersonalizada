@@ -1,0 +1,14 @@
+class ColaPersonalizada {
+    private ListaVinculada lista;
+
+    public ColaPersonalizada() {
+        this.lista = new ListaVinculada();
+    }
+
+    public void encolar(int dato) {
+        lista.insertar(dato);
+    }
+
+    public int desencolar() {
+        return lista.eliminar();
+    }
