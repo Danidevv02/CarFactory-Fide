@@ -105,4 +105,28 @@ public class jugador {
     public boolean alcanzarObjetivo(int objetivoDinero, int objetivoOrdenesPerdidas) {
         return (dinero >= objetivoDinero && ordenesPerdidas <= objetivoOrdenesPerdidas);
     }
+
+    private boolean verificarObjetivos() {
+        switch (fabricaActual) {
+            case 1:
+                return (dinero >= 90000 && ordenesPerdidas <= 3);
+            case 2:
+                return (dinero >= 125000 && ordenesPerdidas <= 2);
+            case 3:
+                return (dinero >= 275000 && ordenesPerdidas <= 1);
+            default:
+                return false;
+        }
+    }
+
+    public void avanzarFabrica() {
+        if (verificarObjetivos()) {
+            fabricaActual++;
+            System.out.println("¡Has avanzado a la fábrica " + fabricaActual + "!");
+            // Aquí podrías realizar otras acciones relacionadas con el avance de fábrica
+        } else {
+            System.out.println("No cumples con los requisitos para avanzar de fábrica.");
+        }
+    }
+        
 }
