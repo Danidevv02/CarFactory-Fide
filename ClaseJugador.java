@@ -123,7 +123,7 @@ public class jugador {
         if (verificarObjetivos()) {
             fabricaActual++;
             System.out.println("¡Has avanzado a la fábrica " + fabricaActual + "!");
-            // Aquí podrías realizar otras acciones relacionadas con el avance de fábrica
+
         } else {
             System.out.println("No cumples con los requisitos para avanzar de fábrica.");
         }
