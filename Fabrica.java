@@ -8,6 +8,8 @@ class Fabrica {
     private Queue<String> ordenesEnCola;
     private Queue<String> cintaTransportadora;
     private Queue<String> lineasProduccion;
+    private ListaEnlazada<Integer> ordenes;
+    private Jugador jugador;
 
     public Fabrica(int nivel, int dineroObjetivo, int maximoOrdenesPerdidas) {
         this.nivel = nivel;
@@ -18,8 +20,13 @@ class Fabrica {
         this.cintaTransportadora = new Queue<>();
         this.lineasProduccion = new Queue<>();
     }
+        
+    public Fabrica(Jugador jugador) {
+        this.ordenes = new ListaEnlazada<>();
+        this.jugador = jugador;
+    }
 
-    public void generarOrdenAleatoria() {
+    public void generarOrden() {
         String[] tiposAutos = {"Sedan", "SUV", "Hatchback"};
         int randIndex = (int) (Math.random() * tiposAutos.length);
         String tipoAuto = tiposAutos[randIndex];
@@ -108,4 +115,38 @@ class Fabrica {
         fabrica.ganarPartida();
         fabrica.perderPartida();
     }
+
+    public void cumplirObjetivos() {
+        int objetivoDinero = 0;
+        int objetivoOrdenesPerdidas = 0;
+
+        // Lógica para determinar los objetivos según la fábrica actual
+        // Se omite por simplicidad en este ejemplo
+
+        if (jugador.alcanzarObjetivo(objetivoDinero, objetivoOrdenesPerdidas)) {
+            System.out.println("¡Has alcanzado los objetivos de la fábrica!");
+        } else {
+            System.out.println("No has alcanzado los objetivos de la fábrica.");
+        }
+    } 
+    private void determinarObjetivos() {
+        switch (fabricaActual) {
+            case 1:
+                objetivoDinero = 90000;
+                objetivoOrdenesPerdidas = 3;
+                break;
+            case 2:
+                objetivoDinero = 125000;
+                objetivoOrdenesPerdidas = 2;
+                break;
+            case 3:
+                objetivoDinero = 275000;
+                objetivoOrdenesPerdidas = 1;
+                break;
+            default:
+                objetivoDinero = 0;
+                objetivoOrdenesPerdidas = 0;
+                break;
+        }
+    }        
 }
