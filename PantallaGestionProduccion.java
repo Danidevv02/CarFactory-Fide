@@ -3,8 +3,6 @@ import javax.swing.*;
 
 public class PantallaGestionProduccion extends JFrame {
 
-    private List<Auto> listaAutos;
-    private JPanel panelListaAutos;
     private JPanel panelControlesProduccion;
     private JPanel panelIndicadores;
 
@@ -16,25 +14,21 @@ public class PantallaGestionProduccion extends JFrame {
         // Crear el panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout());
 
-        // Crear la lista de autos
-        listaAutos = new ArrayList<>();
-        // ... (código para agregar autos a la lista) ...
-
-        panelListaAutos = new JPanel(new GridLayout(0, 1));
-        for (Auto auto : listaAutos) {
-            panelListaAutos.add(new PanelAuto(auto));
-        }
-
         // Crear los controles de producción
-        panelControlesProduccion = new JPanel();
-        // ... (código para agregar los controles de producción) ...
+        panelControlesProduccion = new JPanel(new GridLayout(3, 1));
+        JButton botonIniciarProduccion = new JButton("Iniciar producción");
+        JButton botonDetenerProduccion = new JButton("Detener producción");
+        panelControlesProduccion.add(botonIniciarProduccion);
+        panelControlesProduccion.add(botonDetenerProduccion);
 
         // Crear los indicadores
-        panelIndicadores = new JPanel();
-        // ... (código para agregar los indicadores) ...
+        panelIndicadores = new JPanel(new GridLayout(3, 1));
+        JLabel labelIndicadorProduccion = new JLabel("Producción actual: ");
+        JLabel labelProduccionActual = new JLabel("0 autos");
+        panelIndicadores.add(labelIndicadorProduccion);
+        panelIndicadores.add(labelProduccionActual);
 
         // Añadir los paneles al panel principal
-        panelPrincipal.add(panelListaAutos, BorderLayout.WEST);
         panelPrincipal.add(panelControlesProduccion, BorderLayout.CENTER);
         panelPrincipal.add(panelIndicadores, BorderLayout.EAST);
 
@@ -42,19 +36,3 @@ public class PantallaGestionProduccion extends JFrame {
         getContentPane().add(panelPrincipal);
         setVisible(true);
     }
-
-    private class PanelAuto extends JPanel {
-
-        private Auto auto;
-
-        public PanelAuto(Auto auto) {
-            this.auto = auto;
-
-            setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
-            // ... (código para mostrar la información del auto) ...
-        }
-    }
-
-}
-
