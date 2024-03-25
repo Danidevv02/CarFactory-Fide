@@ -12,37 +12,36 @@ public class PantallaGestionEmpleados extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Crear el panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout());
 
-        // Crear la lista de empleados (supongamos que ya está llena)
+
         panelListaEmpleados = new JPanel(new GridLayout(0, 1));
-        // Aquí puedes agregar paneles de empleado de ejemplo
+
         for (int i = 0; i < 5; i++) {
             Empleado empleado = new Empleado("Empleado " + (i + 1), "Cargo " + (i + 1));
             panelListaEmpleados.add(new PanelEmpleado(empleado));
         }
 
-        // Crear los controles de gestión (agregaremos botones de ejemplo)
+
         panelControlesGestion = new JPanel(new FlowLayout());
         JButton botonAgregarEmpleado = new JButton("Agregar Empleado");
         JButton botonEliminarEmpleado = new JButton("Eliminar Empleado");
         panelControlesGestion.add(botonAgregarEmpleado);
         panelControlesGestion.add(botonEliminarEmpleado);
 
-        // Crear los indicadores (agregaremos etiquetas de ejemplo)
+
         panelIndicadores = new JPanel(new GridLayout(0, 1));
         JLabel labelTotalEmpleados = new JLabel("Total de empleados: 5");
         JLabel labelIndicador = new JLabel("Indicador de gestión");
         panelIndicadores.add(labelTotalEmpleados);
         panelIndicadores.add(labelIndicador);
 
-        // Añadir los paneles al panel principal
+
         panelPrincipal.add(panelListaEmpleados, BorderLayout.WEST);
         panelPrincipal.add(panelControlesGestion, BorderLayout.CENTER);
         panelPrincipal.add(panelIndicadores, BorderLayout.EAST);
 
-        // Mostrar la pantalla
+
         getContentPane().add(panelPrincipal);
         setVisible(true);
     }
@@ -64,7 +63,6 @@ public class PantallaGestionEmpleados extends JFrame {
         }
     }
 
-    // Clase Empleado de ejemplo
     private class Empleado {
         private String nombre;
         private String cargo;
@@ -83,9 +81,3 @@ public class PantallaGestionEmpleados extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new PantallaGestionEmpleados();
-        });
-    }
-}
