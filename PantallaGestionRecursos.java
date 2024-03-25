@@ -1,9 +1,8 @@
-
 import java.awt.*;
 import javax.swing.*;
+
 public class PantallaGestionRecursos extends JFrame {
 
-    private List<Recurso> listaRecursos;
     private JPanel panelListaRecursos;
     private JPanel panelControlesGestion;
     private JPanel panelIndicadores;
@@ -13,32 +12,16 @@ public class PantallaGestionRecursos extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Crear el panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout());
 
-        // Crear la lista de recursos
-        listaRecursos = new ArrayList<>();
-        // ... (código para agregar recursos a la lista) ...
-
-        panelListaRecursos = new JPanel(new GridLayout(0, 1));
-        for (Recurso recurso : listaRecursos) {
-            panelListaRecursos.add(new PanelRecurso(recurso));
-        }
-
-        // Crear los controles de gestión
+        panelListaRecursos = new JPanel();
         panelControlesGestion = new JPanel();
-        // ... (código para agregar los controles de gestión) ...
-
-        // Crear los indicadores
         panelIndicadores = new JPanel();
-        // ... (código para agregar los indicadores) ...
 
-        // Añadir los paneles al panel principal
         panelPrincipal.add(panelListaRecursos, BorderLayout.WEST);
         panelPrincipal.add(panelControlesGestion, BorderLayout.CENTER);
         panelPrincipal.add(panelIndicadores, BorderLayout.EAST);
 
-        // Mostrar la pantalla
         getContentPane().add(panelPrincipal);
         setVisible(true);
     }
@@ -52,9 +35,29 @@ public class PantallaGestionRecursos extends JFrame {
 
             setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-            // ... (código para mostrar la información del recurso) ...
+            JLabel labelNombre = new JLabel("Nombre: " + recurso.getNombre());
+            JLabel labelCantidad = new JLabel("Cantidad: " + recurso.getCantidad());
+
+            add(labelNombre);
+            add(labelCantidad);
         }
     }
 
-}
+    private class Recurso {
+        private String nombre;
+        private int cantidad;
+
+        public Recurso(String nombre, int cantidad) {
+            this.nombre = nombre;
+            this.cantidad = cantidad;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public int getCantidad() {
+            return cantidad;
+        }
+    }
 
