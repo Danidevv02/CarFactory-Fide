@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import javax.swing.*;
 
 public class PantallaPrincipal extends JFrame {
@@ -8,26 +7,54 @@ public class PantallaPrincipal extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Crear el panel principal
-        JPanel panelPrincipal = new JPanel(new BorderLayout());
-
-        // Crear la barra de menú
         JMenuBar barraMenu = new JMenuBar();
         setJMenuBar(barraMenu);
 
-        // Crear el menú de producción
         JMenu menuProduccion = new JMenu("Producción");
         barraMenu.add(menuProduccion);
 
-        // Crear el item de menú para la gestión de producción
         JMenuItem itemGestionProduccion = new JMenuItem("Gestionar producción");
         menuProduccion.add(itemGestionProduccion);
 
-        // Añadir el panel principal al JFrame
-        getContentPane().add(panelPrincipal);
-
-        // Mostrar la pantalla
         setVisible(true);
     }
 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new PantallaPrincipal();
+            new PantallaGestionEmpleados();
+            new PantallaGestionProduccion();
+            new PantallaGestionRecursos();
+        });
+    }
+}
+
+class PantallaGestionEmpleados extends JFrame {
+
+    public PantallaGestionEmpleados() {
+        setTitle("Gestión de empleados");
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setVisible(true);
+    }
+}
+
+class PantallaGestionProduccion extends JFrame {
+
+    public PantallaGestionProduccion() {
+        setTitle("Gestión de producción");
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setVisible(true);
+    }
+}
+
+class PantallaGestionRecursos extends JFrame {
+
+    public PantallaGestionRecursos() {
+        setTitle("Gestión de recursos");
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setVisible(true);
+    }
 }
